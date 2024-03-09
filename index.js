@@ -7,8 +7,11 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
+
+    // Sorts the posts depending on the id
+    let sortedPosts = posts.sort((a, b) => b.id - a.id);
     res.render("index.ejs", {
-        posts : posts
+        posts : sortedPosts
     })
   });  
 
@@ -26,7 +29,7 @@ app.post("/submit", (req, res) => {
     res.redirect("/")
 })
 
-
+// Function for creating new posts
 let currentId = 10;
 function createNewPost(blogTitle, blogContent, authorName) {
     const newPost = {
@@ -34,22 +37,51 @@ function createNewPost(blogTitle, blogContent, authorName) {
         blogTitle : blogTitle,
         blogPostContent: blogContent,
         dateCreated: new Date().toLocaleDateString(),
-        author: authorName, 
+        authorName: authorName, 
     };
     posts.push(newPost);
     console.log(posts)
 };
 
+// Method for deleting existing posts
 app.post("/delete/:postId", (req, res) => {
     const { postId } = req.params;
     posts = posts.filter(post => post.id !== parseInt(postId));
     res.redirect("/")
 })
 
+// Method for editing existing ports
+app.get("/edit/:postId", (req, res) => {
+    const { postId } = req.params;
+    const postToEdit = posts.find(post => post.id === parseInt(postId));
+    if (postToEdit) {
+        res.render("edit.ejs", { post: postToEdit });
+    } else {
+        res.status(404).send("Post not found here bucko!")
+    }
+});
+
+// Handle edit form submission
+app.post("/edit/:postId", (req,res) => {
+    const { postId } = req.params;
+    const { blogTitle, blogContent, authorName } = req.body;
+    const postIndex = posts.findIndex(post => post.id === parseInt(postId));
+    if (postIndex !== -1) {
+        posts[postIndex].blogTitle = blogTitle;
+        posts[postIndex].blogPostContent = blogContent;
+        posts[postIndex].authorName = authorName;
+    }
+    else {
+        res.status(404).send("Post not found here bucko!")
+    }
+    res.redirect("/")
+})
+
+
+// Method for checking the port is running
 app.listen(port, () => {
     console.log(`Looks like your in luck! The server be running on port ${port}.`)
 })
-
 
 
 

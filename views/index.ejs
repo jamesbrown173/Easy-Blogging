@@ -16,7 +16,7 @@
     <div class="post">
         <h1><%= post.blogTitle %></h1>
         <p><%= post.blogPostContent %></p>
-        <p>This post was created on <%= post.dateCreated %> by <%= post.author %></p><br>
+        <p>This post was created on <%= post.dateCreated %> by <%= post.authorName %></p><br>
         <p>The post id = <%= post.id %></p>
         <form action="/delete/<%= post.id %>" method="POST" onsubmit="return confirm('Are ya sure ya wanna delete it bucko?');">
             <input type="submit" value="delete">
