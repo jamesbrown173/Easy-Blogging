@@ -1,7 +1,7 @@
 * {
     padding: 0rem;
     margin: 0rem;
-    
+    font-family: "Mulish", sans-serif;
 }
 
 /* // <uniquifier>: Use a unique and descriptive class name
@@ -14,6 +14,7 @@
   font-style: normal;
 }
 
+/* Title Bar */
 
 .title__bar-container {
     background-color: antiquewhite;
@@ -22,6 +23,9 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    font-family: "Mulish", sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
 }
 
 .title__bar-item-left,
@@ -32,3 +36,82 @@
 i {
     font-size: 2rem;
 }
+
+/* Blog Input */
+
+.blog__input__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    flex-direction: column;
+    text-align: center;
+}
+
+.blog__input__container h2 {
+    margin-top: 2rem;
+}
+
+
+.blog__input__container form input,
+.blog__input__container form textarea {
+    width: 30rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+.blog__input__container form input {
+    height: 2rem;
+}
+
+.blog__input__container input[type=submit]{
+    padding: 0rem 1rem;
+    width: 10rem;
+
+}
+
+/* New Posts */
+
+.newPost__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 1rem;
+}
+
+.newPost__item {
+    margin: 1rem;
+    background-color:antiquewhite;
+    padding: 5rem;
+    border-radius: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.newPost__item *{
+    margin-top: 1rem;
+}
+
+.newPost__buttonsContainer {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.newPost__buttonsContainer input[type=submit] {
+    padding: 0rem 1rem;
+}
+
+/* Footer */
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+}
+
