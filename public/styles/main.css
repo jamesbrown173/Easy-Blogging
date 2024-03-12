@@ -4,6 +4,13 @@
     font-family: "Mulish", sans-serif;
 }
 
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
 /* // <uniquifier>: Use a unique and descriptive class name
 // <weight>: Use a value from 200 to 1000 */
 
@@ -49,7 +56,7 @@ i {
 }
 
 .blog__input__container h2 {
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 
 
