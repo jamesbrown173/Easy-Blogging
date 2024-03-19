@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 
 const app = express();
-const port = 3001;
+const port = 5000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -78,10 +78,13 @@ app.post("/edit/:postId", (req,res) => {
 })
 
 
-// Method for checking the port is running
-app.listen(port, () => {
-    console.log(`Looks like your in luck! The server be running on port ${port}.`)
-})
+// Method for checking the port is running on port 5000
+app.listen(process.env.PORT || port, () => console.log(`Listening on port ${port}`))
+
+// Old app.listen method
+// app.listen(port, () => {
+//     console.log(`Looks like your in luck! The server be running on port ${port}.`)
+// })
 
 
 
